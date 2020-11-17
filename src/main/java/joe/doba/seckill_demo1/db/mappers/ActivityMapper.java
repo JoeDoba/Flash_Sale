@@ -2,6 +2,8 @@ package joe.doba.seckill_demo1.db.mappers;
 
 import joe.doba.seckill_demo1.db.po.Activity;
 
+import java.util.List;
+
 public interface ActivityMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,6 @@ public interface ActivityMapper {
     int updateByPrimaryKeySelective(Activity record);
 
     int updateByPrimaryKey(Activity record);
+
+    List<Activity> queryActivitysByStatus(int status);
 }

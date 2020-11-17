@@ -3,7 +3,6 @@ import joe.doba.seckill_demo1.db.mappers.ActivityMapper;
 import joe.doba.seckill_demo1.db.po.Activity;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 
@@ -12,9 +11,10 @@ class SeckillDemo1ApplicationTests {
     @Resource
     private ActivityMapper activityMapper;
 
-    @Test
-    void contextLoads() {
-    }
+//    @Test
+//    void contextLoads() {
+//    }
+
     @Test
     public void SeckillActivityTest() {
         Activity activity = new Activity();

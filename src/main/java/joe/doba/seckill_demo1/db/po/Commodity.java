@@ -1,4 +1,4 @@
-package com.jiuzhang.seckill.db.po;
+package joe.doba.seckill_demo1.db.po;
 
 public class Commodity {
     private Long id;

@@ -1,6 +1,6 @@
-package com.jiuzhang.seckill.db.mappers;
+package joe.doba.seckill_demo1.db.mappers;
 
-import com.jiuzhang.seckill.db.po.Activity;
+import joe.doba.seckill_demo1.db.po.Activity;
 
 public interface ActivityMapper {
     int deleteByPrimaryKey(Long id);

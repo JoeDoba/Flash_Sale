@@ -1,4 +1,4 @@
-package com.jiuzhang.seckill.db.po;
+package joe.doba.seckill_demo1.db.po;
 
 import java.math.BigDecimal;
 import java.util.Date;

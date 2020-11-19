@@ -1,9 +1,7 @@
 package joe.doba.seckill_demo1;
 
-import joe.doba.seckill_demo1.db.util.RedisService;
-import joe.doba.seckill_demo1.db.web.RedisOverSellControllorer;
+import joe.doba.seckill_demo1.util.RedisService;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="joe.doba.seckill_demo1.db.mappers.ActivityMapper">
-  <resultMap id="BaseResultMap" type="joe.doba.seckill_demo1.db.po.Activity">
+  <resultMap id="BaseResultMap" type="joe.doba.seckill_demo1.db.pojo.Activity">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="commodity_id" jdbcType="BIGINT" property="commodityId" />
@@ -28,7 +28,7 @@
     delete from seckill_activity
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="joe.doba.seckill_demo1.db.po.Activity">
+  <insert id="insert" parameterType="joe.doba.seckill_demo1.db.pojo.Activity">
     insert into seckill_activity (id, name, commodity_id, 
       old_price, seckill_price, activity_status, 
       start_time, end_time, total_stock, 
@@ -38,7 +38,7 @@
       #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{totalStock,jdbcType=BIGINT}, 
       #{availableStock,jdbcType=INTEGER}, #{lockStock,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="joe.doba.seckill_demo1.db.po.Activity">
+  <insert id="insertSelective" parameterType="joe.doba.seckill_demo1.db.pojo.Activity">
     insert into seckill_activity
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="joe.doba.seckill_demo1.db.po.Activity">
+  <update id="updateByPrimaryKeySelective" parameterType="joe.doba.seckill_demo1.db.pojo.Activity">
     update seckill_activity
     <set>
       <if test="name != null">
@@ -147,7 +147,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="joe.doba.seckill_demo1.db.po.Activity">
+  <update id="updateByPrimaryKey" parameterType="joe.doba.seckill_demo1.db.pojo.Activity">
     update seckill_activity
     set name = #{name,jdbcType=VARCHAR},
       commodity_id = #{commodityId,jdbcType=BIGINT},

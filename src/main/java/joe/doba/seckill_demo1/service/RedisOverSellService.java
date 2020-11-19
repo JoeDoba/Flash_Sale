@@ -1,6 +1,6 @@
-package joe.doba.seckill_demo1.db.service;
+package joe.doba.seckill_demo1.service;
 
-import joe.doba.seckill_demo1.db.util.RedisService;
+import joe.doba.seckill_demo1.util.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
-package joe.doba.seckill_demo1.db.web;
+package joe.doba.seckill_demo1.controllers;
 
 import joe.doba.seckill_demo1.db.dao.ActivityDao;
 import joe.doba.seckill_demo1.db.dao.CommodityDao;
-import joe.doba.seckill_demo1.db.po.Activity;
-import joe.doba.seckill_demo1.db.po.Commodity;
+import joe.doba.seckill_demo1.db.pojo.Activity;
+import joe.doba.seckill_demo1.db.pojo.Commodity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

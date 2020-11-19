@@ -1,7 +1,7 @@
 package joe.doba.seckill_demo1.db.dao;
 
 import joe.doba.seckill_demo1.db.mappers.ActivityMapper;
-import joe.doba.seckill_demo1.db.po.Activity;
+import joe.doba.seckill_demo1.db.pojo.Activity;
 import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import java.util.List;

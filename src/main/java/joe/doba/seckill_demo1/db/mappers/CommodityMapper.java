@@ -1,6 +1,6 @@
 package joe.doba.seckill_demo1.db.mappers;
 
-import joe.doba.seckill_demo1.db.po.Commodity;
+import joe.doba.seckill_demo1.db.pojo.Commodity;
 
 public interface CommodityMapper {
     int deleteByPrimaryKey(Long id);

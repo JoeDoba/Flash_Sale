@@ -1,4 +1,4 @@
-package joe.doba.seckill_demo1.db.util;
+package joe.doba.seckill_demo1.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

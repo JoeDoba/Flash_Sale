@@ -1,6 +1,6 @@
 package joe.doba.seckill_demo1.db.mappers;
 
-import joe.doba.seckill_demo1.db.po.Activity;
+import joe.doba.seckill_demo1.db.pojo.Activity;
 
 import java.util.List;
 

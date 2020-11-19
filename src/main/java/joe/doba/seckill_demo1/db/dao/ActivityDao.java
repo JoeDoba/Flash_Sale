@@ -1,5 +1,5 @@
 package joe.doba.seckill_demo1.db.dao;
-import joe.doba.seckill_demo1.db.po.Activity;
+import joe.doba.seckill_demo1.db.pojo.Activity;
 import java.util.List;
 
 public interface ActivityDao {

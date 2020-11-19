@@ -23,7 +23,7 @@
         </javaTypeResolver>
 
         <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="joe.doba.seckill_demo1.db.po"
+        <javaModelGenerator targetPackage="joe.doba.seckill_demo1.db.pojo"
                             targetProject="./src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true"/>
@@ -46,12 +46,15 @@
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-        <table schema="" tableName="seckill_activity" domainObjectName="Activity"  enableCountByExample="false" enableDeleteByExample="false"
+        <table schema="" tableName="seckill_user" domainObjectName="User"  enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
         </table>
-        <table schema="" tableName="seckill_commodity" domainObjectName="Commodity"  enableCountByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
-        </table>
+<!--        <table schema="" tableName="seckill_activity" domainObjectName="Activity"  enableCountByExample="false" enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table schema="" tableName="seckill_commodity" domainObjectName="Commodity"  enableCountByExample="false" enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
 
 
         <!-- 有些表的字段需要指定java类型

@@ -1,6 +1,6 @@
-package joe.doba.seckill_demo1.db.web;
+package joe.doba.seckill_demo1.controllers;
 
-import joe.doba.seckill_demo1.db.service.OverSellService;
+import joe.doba.seckill_demo1.service.OverSellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

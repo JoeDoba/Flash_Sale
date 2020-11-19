@@ -1,7 +1,7 @@
-package joe.doba.seckill_demo1.db.service;
+package joe.doba.seckill_demo1.service;
 
 import joe.doba.seckill_demo1.db.dao.ActivityDao;
-import joe.doba.seckill_demo1.db.po.Activity;
+import joe.doba.seckill_demo1.db.pojo.Activity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -28,7 +28,6 @@ public class OrderRequestController {
         this.activityDao = activityDao;
     }
 
-    @ResponseBody
     @RequestMapping("seckill/buy/{userId}/{activityId}")
     public ModelAndView seckillCommodity(@PathVariable Long userId, @PathVariable Long activityId) {
         boolean purchaseResult = false;
@@ -37,8 +36,9 @@ public class OrderRequestController {
             purchaseResult = redisOverSellService.stockDeductValidator(activityId);
             if (purchaseResult) {
                 Order order = redisOverSellService.createOrder(activityId, userId);
-                modelAndView.addObject("resultInfo", "Congrats!! The order is been generating. Order Number: " + order.getOrderNo());
+                modelAndView.addObject("resultInfo", "Congrats!! The order has been generated. Order Number: " + order.getOrderNo());
                 modelAndView.addObject("orderNo", order.getOrderNo());
+                modelAndView.addObject("userId", userId);
             } else {
                 modelAndView.addObject("resultInfo", "Sorry, the item was sold out");
             }

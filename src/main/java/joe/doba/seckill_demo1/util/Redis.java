@@ -10,12 +10,12 @@ import redis.clients.jedis.JedisPool;
 import java.util.Collections;
 
 @Service
-public class RedisService {
+public class Redis {
     private JedisPool jedisPool;
     private Object throwable;
 
     @Autowired
-    public RedisService(JedisPool jedisPool) {
+    public Redis(JedisPool jedisPool) {
         this.jedisPool = jedisPool;
     }
 

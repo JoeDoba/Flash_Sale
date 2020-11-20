@@ -8,12 +8,9 @@ import java.math.BigDecimal;
 
 @SpringBootTest
 class SeckillDemo1ApplicationTests {
+
     @Resource
     private ActivityMapper activityMapper;
-
-//    @Test
-//    void contextLoads() {
-//    }
 
     @Test
     public void SeckillActivityTest() {
@@ -29,4 +26,5 @@ class SeckillDemo1ApplicationTests {
         activityMapper.insert(activity);
         System.out.println("======>" + activityMapper.selectByPrimaryKey(1L));
     }
+
 }

@@ -17,5 +17,9 @@ public interface ActivityMapper {
 
     int updateByPrimaryKey(Activity record);
 
+    int lockInventory(Long id);
+
+    int deductInventory(Long id);
+
     List<Activity> queryActivitysByStatus(int status);
 }

@@ -1,5 +1,6 @@
 package joe.doba.seckill_demo1.db.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Order {
@@ -9,11 +10,11 @@ public class Order {
 
     private Integer orderStatus;
 
-    private Long activityId;
+    private Long seckillActivityId;
 
     private Long userId;
 
-    private Long orderAmount;
+    private BigDecimal orderAmount;
 
     private Date createTime;
 
@@ -43,12 +44,12 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public Long getActivityId() {
-        return activityId;
+    public Long getSeckillActivityId() {
+        return seckillActivityId;
     }
 
-    public void setActivityId(Long activityId) {
-        this.activityId = activityId;
+    public void setSeckillActivityId(Long seckillActivityId) {
+        this.seckillActivityId = seckillActivityId;
     }
 
     public Long getUserId() {
@@ -59,11 +60,11 @@ public class Order {
         this.userId = userId;
     }
 
-    public Long getOrderAmount() {
+    public BigDecimal getOrderAmount() {
         return orderAmount;
     }
 
-    public void setOrderAmount(Long orderAmount) {
+    public void setOrderAmount(BigDecimal orderAmount) {
         this.orderAmount = orderAmount;
     }
 

@@ -6,9 +6,13 @@ public interface ActivityDao {
 
     public List<Activity> queryActivitysByStatus(int activityStatus);
 
-    public void inertActivity(Activity activity);
+    public void insertActivity(Activity activity);
 
     public Activity queryActivityById(long activityId);
 
     public void updateActivity(Activity activity);
+
+    public boolean deductInventory(long activityId);
+
+    public boolean lockInventory(long activityId);
 }

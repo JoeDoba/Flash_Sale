@@ -1,5 +1,8 @@
 package joe.doba.seckill_demo1.controllers;
 
+import com.alibaba.csp.sentinel.Entry;
+import com.alibaba.csp.sentinel.SphU;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.fastjson.JSON;
 import joe.doba.seckill_demo1.db.dao.ActivityDao;
 import joe.doba.seckill_demo1.db.dao.CommodityDao;
@@ -15,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.Map;
+
 @Slf4j
 @Controller
 public class ActivityController {
     private ActivityDao activityDao;
     private CommodityDao commodityDao;
     private Redis redisService;
+
     @Autowired
     public ActivityController(ActivityDao activityDao, CommodityDao commodityDao, Redis redisService) {
         this.activityDao = activityDao;
@@ -33,9 +38,14 @@ public class ActivityController {
      **/
     @RequestMapping("/seckills")
     public String sucessTest(Map<String, Object> resultMap) {
-        List<Activity> seckillActivities = activityDao.queryActivitysByStatus(1);
-        resultMap.put("seckillActivities", seckillActivities);
-        return "seckill_activity_list";
+        try (Entry entry = SphU.entry("activityPage")) {
+            List<Activity> seckillActivities = activityDao.queryActivitysByStatus(1);
+            resultMap.put("seckillActivities", seckillActivities);
+            return "seckill_activity_list";
+        } catch (BlockException blockException) {
+            log.info(blockException.toString());
+            return "wait";
+        }
     }
 
     /**

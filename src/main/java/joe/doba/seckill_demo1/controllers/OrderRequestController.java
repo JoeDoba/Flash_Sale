@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Slf4j
 @Controller
 public class OrderRequestController {
@@ -76,5 +79,12 @@ public class OrderRequestController {
         modelAndView.addObject("orderNo", orderNo);
         redisOverSellService.payOrder(orderNo);
         return modelAndView;
+    }
+
+    @RequestMapping("/seckill/getSystemTime")
+    public String getSystemTime() {
+        SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = time.format(new Date());
+        return date;
     }
 }

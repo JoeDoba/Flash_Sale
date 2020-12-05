@@ -2,8 +2,10 @@ package joe.doba.seckill_demo1.service;
 
 import com.alibaba.fastjson.JSON;
 import joe.doba.seckill_demo1.db.dao.ActivityDao;
+import joe.doba.seckill_demo1.db.dao.CommodityDao;
 import joe.doba.seckill_demo1.db.dao.OrderDao;
 import joe.doba.seckill_demo1.db.pojo.Activity;
+import joe.doba.seckill_demo1.db.pojo.Commodity;
 import joe.doba.seckill_demo1.db.pojo.Order;
 import joe.doba.seckill_demo1.util.Redis;
 import joe.doba.seckill_demo1.util.SnowFlake;
@@ -20,14 +22,16 @@ public class RedisOverSellService {
     private Redis redisService;
     private OrderDao orderDao;
     private ActivityDao activityDao;
+    private CommodityDao commodityDao;
     private RocketMQ_send_message rocketMQSendmessage;
     private SnowFlake snowFlake = new SnowFlake(1,1);
 
     @Autowired
-    public RedisOverSellService(Redis redisService, OrderDao orderDao, ActivityDao activityDao, RocketMQ_send_message rocketMQSendmessage) {
+    public RedisOverSellService(Redis redisService, OrderDao orderDao, ActivityDao activityDao, CommodityDao commodityDao, RocketMQ_send_message rocketMQSendmessage) {
         this.redisService = redisService;
         this.orderDao = orderDao;
         this.activityDao = activityDao;
+        this.commodityDao = commodityDao;
         this.rocketMQSendmessage = rocketMQSendmessage;
     }
 
@@ -63,5 +67,18 @@ public class RedisOverSellService {
             order.setOrderStatus(2);
             orderDao.updateOrder(order);
         }
+    }
+
+    /**
+     * Import activity and commodity information into Redis.
+     **/
+
+    public void pushInfoToRedis(Long activityId) {
+        Activity activity = activityDao.queryActivityById(activityId);
+        redisService.setValue("activityId:" + activityId, JSON.toJSONString(activity));
+
+        Long commodityId = activity.getCommodityId();
+        Commodity commodity = commodityDao.queryCommodityById(commodityId);
+        redisService.setValue("commodityId:" + commodityId, JSON.toJSONString(commodity));
     }
 }

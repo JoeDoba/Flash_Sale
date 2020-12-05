@@ -1,5 +1,6 @@
 package joe.doba.seckill_demo1.util;
 
+import joe.doba.seckill_demo1.db.pojo.Activity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,6 @@ import java.util.Collections;
 @Service
 public class Redis {
     private JedisPool jedisPool;
-    private Object throwable;
 
     @Autowired
     public Redis(JedisPool jedisPool) {
@@ -22,6 +22,11 @@ public class Redis {
     public void setValue(String key, Long value) {
         Jedis jedisClient = jedisPool.getResource();
         jedisClient.set(key, value.toString());
+    }
+
+    public void setValue(String key, String value) {
+        Jedis jedisClient = jedisPool.getResource();
+        jedisClient.set(key, value);
     }
 
     public String getValue(String key) {
@@ -54,4 +59,6 @@ public class Redis {
             return false;
         }
     }
+
+
 }

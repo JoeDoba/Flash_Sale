@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 @Controller
 public class AddActivityController {
 
-    private ActivityDao activityDao;
+    private final ActivityDao activityDao;
     @Autowired
     public AddActivityController(ActivityDao activityDao) {
         this.activityDao = activityDao;
@@ -27,7 +27,7 @@ public class AddActivityController {
             @RequestParam("commodityId") long commodityId,
             @RequestParam("seckillPrice") BigDecimal seckillPrice,
             @RequestParam("oldPrice") BigDecimal oldPrice,
-            @RequestParam("seckillNumber") long seckillNumber,
+            @RequestParam("seckillNumber") int seckillNumber,
             @RequestParam("startTime") String startTime,
             @RequestParam("endTime") String endTime
     ) throws ParseException {
@@ -39,8 +39,8 @@ public class AddActivityController {
         activity.setCommodityId(commodityId);
         activity.setSeckillPrice(seckillPrice);
         activity.setOldPrice(oldPrice);
-        activity.setTotalStock(seckillNumber);
-        activity.setAvailableStock(new Integer("" + seckillNumber));
+        activity.setTotalStock((long) seckillNumber);
+        activity.setAvailableStock(seckillNumber);
         activity.setLockStock(0L);
         activity.setActivityStatus(1);
         activity.setStartTime(format.parse(startTime));

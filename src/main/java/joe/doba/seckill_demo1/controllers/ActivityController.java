@@ -22,9 +22,9 @@ import java.util.Map;
 @Slf4j
 @Controller
 public class ActivityController {
-    private ActivityDao activityDao;
-    private CommodityDao commodityDao;
-    private Redis redisService;
+    private final ActivityDao activityDao;
+    private final CommodityDao commodityDao;
+    private final Redis redisService;
 
     @Autowired
     public ActivityController(ActivityDao activityDao, CommodityDao commodityDao, Redis redisService) {
@@ -58,9 +58,7 @@ public class ActivityController {
         Activity activity;
         Commodity commodity;
 
-        /**
-         *  Check if redis cached activity and commodity information before query SQL database.
-         **/
+        // Check if redis cached activity and commodity information before query SQL database.
 
         String activityInfo = redisService.getValue("activityId:" + activityId);
         if (StringUtils.isNotEmpty(activityInfo)) {

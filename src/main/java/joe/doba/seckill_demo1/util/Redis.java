@@ -1,9 +1,6 @@
 package joe.doba.seckill_demo1.util;
 
-import joe.doba.seckill_demo1.db.pojo.Activity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -12,7 +9,7 @@ import java.util.Collections;
 
 @Service
 public class Redis {
-    private JedisPool jedisPool;
+    private final JedisPool jedisPool;
 
     @Autowired
     public Redis(JedisPool jedisPool) {
@@ -60,5 +57,22 @@ public class Redis {
         }
     }
 
+    public boolean getDistributedLock(String lockKey, String requestId, int expireTime) {
+        Jedis jedisClient = jedisPool.getResource();
+        // NX: Set if not exist
+        // If key doesn't exist -> set. Otherwise, just skipping.
+        // PX: Key lock will expire after a certain amount of time depends on value 'expireTime'
+        String result = jedisClient.set(lockKey, requestId, "NX", "PX", expireTime);
+        return "OK".equals(result);
+    }
 
+    public boolean releaseDistributedLock(String lockKey, String requestId) {
+        Jedis jedisClient = jedisPool.getResource();
+        String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
+        Long result = (Long) jedisClient.eval(script, Collections.singletonList(lockKey), Collections.singletonList(requestId));
+        if (result == 1L) {
+            return true;
+        }
+        return false;
+    }
 }
